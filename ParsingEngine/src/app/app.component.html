@@ -1,0 +1,42 @@
+<div class="col-md-5">
+    <h1>{{pageTitle}}</h1>
+    <form class="form-group" autocomplete="off">
+
+        <div class="form-group">
+            <label for="variable">Input = </label>
+            <input name="variable" type="text" class="form-control" [(ngModel)]="inputVal" id="variable" placeholder="0">
+        </div>
+        <div class="form-group">
+            <label for="ifThenExpression">If Then Expression</label>
+            <input name="ifThenExpression" type="text" class="form-control" [(ngModel)]="ifThenExpression" id="ifThenExpression" placeholder="if x == y then">
+        </div>
+        <button type="submit" class="btn btn-default" (click)="evaluateExpression()">Evaluate</button>
+        <div class="form-group">
+            <label for="result">Expression Result</label>
+            <input name="result" type="text" class="form-control" [(ngModel)]="result" id="result">
+
+        </div>
+    </form>
+</div>
+<div class="col-md-7">
+    <h3>Example</h3>
+    <hr>
+    Possible inputs:
+    <pre>
+        [ &#123;"Age": 20&#125;, &#123; "SeniorContent" :"asd"&#125; ]
+        Or
+        Any valid JSON array of objects with key value pair
+    </pre>
+
+    Expressions:
+    <pre>
+
+        A valid expression be a IF.. THEN ..ELSE type of expression
+
+        1. if (@&#123;Age&#125; != "40" AND @&#123;SeniorContent&#125; == "asd") then "yes" else "no"
+        2. if (@&#123;Age&#125; > "40") then "age greater" else "age smaller"
+        2. if ("80" > "40") then "aaa" else "bbb"
+
+        @&#123;variable&#125; will take values from the input array.
+    </pre>
+</div>

@@ -1,0 +1,12 @@
+dependencies:
+  pre:
+    - npm install -g npm
+
+deployment:
+  staging:
+    branch: master
+    commands:
+      - npm run build
+      - scp -r . serverpilot@159.203.25.206:~/apps/rule-evaluator/public:
+          pwd:
+            dist

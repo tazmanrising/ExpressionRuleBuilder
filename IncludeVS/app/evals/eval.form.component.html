@@ -1,0 +1,71 @@
+﻿<div class="col-md-5">
+    <h1>{{pageTitle}}!</h1>
+    <form class="form-group" autocomplete="off">
+
+        <div class="form-group">
+            <label for="variable">Input = </label>
+            <input type="text" class="form-control" [(ngModel)]="inputVal" id="inputVal" placeholder="0">
+        </div>
+        <div class="form-group">
+            <label for="ifThenExpression">If Then Expression</label>
+            <input type="text" class="form-control" [(ngModel)]="ifThenExpression" id="ifThenExpression" placeholder="if x == y then">
+        </div>
+        <button type="submit" class="btn btn-default" (click)="evaluateExpression()">Evaluate</button>
+        <div class="form-group">
+            <label for="result">Expression Result</label>
+            <input type="text" class="form-control" [(ngModel)]="result" id="result">
+
+        </div>
+    </form>
+</div>	
+<div class="col-md-7">  
+    <h3>Example</h3>
+    <hr>
+    Possible inputs:
+    <pre>
+        [ {Age : 20}, { SeniorContent :"asd"} ]
+        Or
+        Any valid JS array of objects with key value pair
+    </pre>
+
+    Expressions:
+    <pre>
+        
+        A valid expression be a IF.. THEN ..ELSE type of expression
+
+        1. if (@{Age} != "40" AND @{SeniorContent} == "asd") then "yes" else "no"
+        2. if (@{Age} > "40") then "age greater" else "age smaller"
+
+        @{variable} will take values from the input array.
+    </pre>
+
+    <br>
+    More Examples:
+
+    <pre>
+        Question:  "For BeginsWith if we give a literal in string will it work as well?"
+ 
+            For eg:
+ 
+                if (@{A} BeginsWith (“a”))
+ 
+                or
+ 
+                if (@{A} Contains (“a”))
+ 
+        something like this?
+
+
+        <strong>Answer:</strong>  While it could be made to work like that the Input = is setup to set a Variable to hold say a literal, 
+        thus then the If Then Expression would end up having the Variable 
+       </pre>
+
+       Current way to achieve this:
+
+       <pre>
+           Input =>  [{A: "asd"}, {B : "a"}]
+
+           If Then Expression =>  if (@{A} BeginsWith (@{B})) then "yes" else "no"
+       </pre>
+
+</div>
